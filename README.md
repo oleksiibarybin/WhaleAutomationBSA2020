@@ -17,10 +17,11 @@ Base frameworks:
 ### Structure of the project
 
 ```
-├───data
 ├───output
-├───helpers
-├───pages
+├───lib
+    ├───helpers
+    ├───data
+    ├───common
 ├───specs
     ├───component
     │   ├───pages
@@ -33,8 +34,8 @@ Base frameworks:
 ├───steps_file.js
 ```
 
--   helpers - directory with additional helpers that extends base API.
--   pages - directory with Page Fragments, Page Objects, Factories etc.
+-   lib/helpers - directory with additional helpers that extends base API.
+-   lib/common - directory with Page Fragments, Page Objects, Factories etc.
 -   specs - tests, located in the folders. Each folder inside includes page objects, steps and tests.
 -   page-definitions.js/fragment-definitions.js - includes page objects def which should be added to config.
 
@@ -74,3 +75,14 @@ If method is common it should be located in the helpers.
 
 ## Nuances for running tests
 
+For successful login you have to provide three valid variables:
+
+- GOOGLE_EMAIL - your google account
+- GOOGLE_PWD - your google account password
+- USERDATA - path to your default user data folder
+
+**Be aware, your chrome instance should be closed before running tests.**
+
+Paste your data within this string and run it in terminal
+
+```USERDATA= GOOGLE_EMAIL= GOOGLE_PWD= npm test```
