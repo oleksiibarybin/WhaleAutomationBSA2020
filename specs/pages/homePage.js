@@ -1,11 +1,24 @@
 const I = actor();
+const genericPage = require("../pages/genericPage");
+
 
 module.exports = {
-  meetingHistoryButton: "#home-go-history",
-  scheduleMeetingButton: "#home-go-schedule",
-  enterTheMeetingButton: "#home-go-create",
-  headerShowSettingsLogoButton: "#header-show-settings",
-  headerDropDownMenuGoProfileButton: "#header-go-profile",
+  centralContainer: "div.chat.ui.segment",
+  meetingHistoryButton:	'#home-go-history',
+  scheduleMeetingButton: '#home-go-schedule',
+  enterMeetingButton:	'#home-go-create',
+  contactsToggleButton:	'#home-toggle-contacts',
+  addNewContactButton:	'#home-add-contact',
+  contactsBlocks:	'#home-contact',
+  groupsToggleButton:	'#home-toggle-groups',
+  addNewGroupButton:	'#home-add-group',
+  notificationButton:	'#header-show-notifications',
+  headerShowSettingsLogoButton:	'#header-show-settings',
+  headerGoHomeLogoButton:	'#header-go-home',
+  headerDropDownMenuGoProfileButton:	'#header-go-profile',
+  headerDropDownMenuGoSettingsButton:	'#header-go-settings',
+  headerDropDownMenuLogOutButton:	'#header-go-logout',
+
 
   verifyAllRequiredElemetsAreOnPage() {
     I.seeElement(this.meetingHistoryButton);
@@ -15,9 +28,14 @@ module.exports = {
   },
 
   goToUserProfile() {
-    I.waitForElement(this.headerShowSettingsLogoButton);
-    I.click(this.headerShowSettingsLogoButton);
-    I.waitForElement(this.headerDropDownMenuGoProfileButton);
-    I.click(this.headerDropDownMenuGoProfileButton);
-  },  
+    genericPage.clickOnElement(this.headerShowSettingsLogoButton);
+    genericPage.clickOnElement(this.headerDropDownMenuGoProfileButton);
+  },
+
+  logOut() {
+    genericPage.clickOnElement(this.headerShowSettingsLogoButton);
+    genericPage.clickOnElement(this.headerDropDownMenuLogOutButton);
+  },
+  
+  
 };

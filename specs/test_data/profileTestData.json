@@ -1,0 +1,10 @@
+{
+    "relativeUrl": "/profile-page",
+    "initialFirstName": "Oleksii",
+    "initialSecondName": "Barybin",
+    "newFirstName": "Олексій",
+    "newSecondName": "Барибін",
+    "initialPhone": "",
+    "newPhone": "380500340809",   
+    "successfullyRegisteredMessage": "You have successfully registered! Now you need to login"
+}

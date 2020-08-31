@@ -62,8 +62,8 @@ const defaultConf = {
       fullPageScreenshots: true,
       chrome: {
         defaultViewport: {
-          width: 1366,
-          height: 768,
+          width: 640,
+          height: 480,
         },
         args: headlessArgs,
       },
@@ -110,6 +110,8 @@ const defaultConf = {
   include: {
     homePage: "./specs/pages/homePage.js",
     profilePage: "./specs/pages/profilePage.js",
+    landingPage: "./specs/pages/landingPage.js",
+    genericPage: "./specs/pages/genericPage.js",
   },
 };
 
