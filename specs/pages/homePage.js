@@ -1,6 +1,9 @@
+const { createNewGroup } = require("./groupPage");
+
 const I = actor();
 
 module.exports = {
+  
   meetingHistoryButton: "#home-go-history",
   scheduleMeetingButton: "#home-go-schedule",
   enterTheMeetingButton: "#home-go-create",
@@ -8,8 +11,8 @@ module.exports = {
   headerDropDownMenuGoProfileButton: "#header-go-profile",
 
   toggleContacts: "#home-toggle-contacts",
-  toggleGroups: "#home-toggle-groups",
 
+  
   verifyAllRequiredElemetsAreOnPage() {
     I.seeElement(this.meetingHistoryButton);
     I.seeElement(this.scheduleMeetingButton);
@@ -23,4 +26,12 @@ module.exports = {
     I.waitForElement(this.headerDropDownMenuGoProfileButton);
     I.click(this.headerDropDownMenuGoProfileButton);
   },  
+
+  goToTheMeetingHistory(){
+    I.waitForElement(this.meetingHistoryButton);
+    I.click(this.meetingHistoryButton);
+  },
+
+  
+
 };

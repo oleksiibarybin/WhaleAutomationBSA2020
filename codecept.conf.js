@@ -113,6 +113,8 @@ const defaultConf = {
   name: "e2e_tests",
   include: {
     homePage: "./specs/pages/homePage.js",
+    historyPage: "./specs/pages/historyPage.js",
+    groupPage: "./specs/pages/groupPage.js",
     profilePage: "./specs/pages/profilePage.js",
   },
 };
