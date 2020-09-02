@@ -10,12 +10,39 @@ Before((I) => {
   });
 
 Scenario(
-  "#1 Check user ability to create new group with member, send message and delete group",
-  async (I, homePage, groupPage) => {
+  "#1 Check user ability to create new group with member from contacts and delete that group",
+  async (I, groupPage) => {
     I.amOnPage("/home");
-    groupPage.createNewGroupAddContact(credentials.newGroupName, credentials.newGroupDescription, credentials.contactForSearch);
-    groupPage.goToGroupWriteSendMessageCheck(credentials.newGroupName, credentials.messageText);
+    groupPage.createNewGroupAddMemberFromContacts(credentials.newGroupName, credentials.newGroupDescription, credentials.contactForSearch);
     groupPage.deleteGroup();
   },
 );
 
+Scenario(
+    "#2 Check user ability to send message into the group",
+    async (I, groupPage) => {
+      I.amOnPage("/home");
+      groupPage.goToGroup(groupPage.existedGroupNameInList, credentials.existedGroupName);
+      groupPage.writeSendMessage(credentials.messageText);
+    },
+  );
+  
+  
+Scenario(
+    "#3 Check user ability to add new member from contacts in existing group and delete him",
+    async (I, groupPage) => {
+      I.amOnPage("/home");
+      groupPage.goToGroup(groupPage.existedGroupNameInList, credentials.existedGroupName, credentials.existedGroupDescription);
+      groupPage.addMemeberFromContactsAndDelete(credentials.contactForSearch);
+    },
+  );
+  
+
+Scenario(
+    "#4 Check user ability to add new member by email in existing group and delete him",
+    async (I, groupPage) => {
+      I.amOnPage("/home");
+      groupPage.goToGroup(groupPage.existedGroupNameInList, credentials.existedGroupName, credentials.existedGroupDescription);
+      groupPage.addMemeberByEmailAndDelete(credentials.emailForSearch, credentials.emailNameForSearch);
+    },
+  );

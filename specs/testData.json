@@ -1,21 +1,25 @@
 {
 
-    "firstName1":          "Зоряна",
-    "lastName1":           "Чижовська",
-    "firstName2":          "Jennifer",
-    "lastName2":           "Frechette",
-    "telephone":           "380985664533",
+    "firstName1":              "Зоряна",
+    "lastName1":               "Чижовська",
+    "firstName2":              "Jennifer",
+    "lastName2":               "Frechette",
+    "telephone":               "380985664533",
 
 
-    "newGroupName":        "B Zoriana test group",
-    "newGroupDescription": "Just simple test group for AT",
-    "contactForSearch":    "Zoriana Chyzhovska",
+    "newGroupName":            "B Zoriana test group",
+    "newGroupDescription":     "Just simple test group for AT",
+    "contactForSearch":        "Zoriana Chyzhovska",
 
-    "existedGroupName":    "A Existed group in the list",
+    "emailForSearch":          "melisa.qa.test@gmail.com",
+    "emailNameForSearch":      "Melisa Adisson",
+
+
+    "existedGroupName":        "A Existed group in the list",
     "existedGroupDescription": "Existed test group",
 
-    "messageText": "Hello Group! This is message from Zira for Automation testing)",
+    "messageText":             "Hello Group! This is message from Zira for Automation testing)",
 
 
-    "historyHeader":       "Meeting history"
+    "historyHeader":           "Meeting history"
 }
