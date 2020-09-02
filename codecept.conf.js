@@ -110,6 +110,7 @@ const defaultConf = {
   include: {
     homePage: "./specs/pages/homePage.js",
     profilePage: "./specs/pages/profilePage.js",
+    contactsPage: "./specs/pages/contactsPage.js"
   },
 };
 
