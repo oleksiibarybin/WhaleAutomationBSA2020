@@ -13,6 +13,6 @@ Feature("Add new contact request in contacts list and delete it");
 //         I.amOnPage("/home");
 //         homePage.clickNewContactButton();
 //         contactsPage.AddNewContact("anonimhacker932@gmail.com", 'Anonim Hacker');
-//         contactsPage.DeleteContact();
+//         contactsPage.DeleteContactRequest();
 //     }
 // )

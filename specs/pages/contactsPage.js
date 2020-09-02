@@ -11,6 +11,7 @@ module.exports = {
     addedContact: "div.description",
     modalWindow: "div.modal.visible.active",
     confirmationButtonDiv: "#confirmation-modal-confirm",
+    deleteContactButton: "#delete-contact",
 
   verifyAllRequiredControlsAreOnContactsPage() {
         I.waitForElement(this.addNewContactModalDiv);
@@ -31,11 +32,20 @@ module.exports = {
         I.see(userName,this.addedContact);
     },
 
-  DeleteContact() {
+  DeleteContactRequest() {
       I.waitForElement(this.contactsContainerDiv);
       this.clickOnElement(this.addedContact);
       I.waitForElement(this.modalWindow);
       this.clickOnElement(this.confirmationButtonDiv);
+    },
+
+    DeleteContact() {
+      I.waitForElement(this.contactsContainerDiv);
+      this.clickOnElement(this.addedContact);
+      this.clickOnElement(this.deleteContactButton);
+      this.clickOnElement(this.confirmationButtonDiv);
+      I.wait(3);
+      I.dontSeeElementInDOM(this.addedContact);
     },
     
   clickOnElement(element) {
