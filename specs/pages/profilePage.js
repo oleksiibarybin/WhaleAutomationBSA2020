@@ -34,6 +34,7 @@ module.exports = {
     genericPage.enterValueToInputField(this.newFirstNameInput, firstName);
     genericPage.enterValueToInputField(this.newSecondNameInput, secondName);
     genericPage.clickOnElement(this.profileSubmitNameButton);
+    I.waitForElement(this.userNameText);
     I.see(`${firstName} ${secondName}`, this.userNameText);
   },
 

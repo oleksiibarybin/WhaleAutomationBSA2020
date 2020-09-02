@@ -1,5 +1,3 @@
-const landingPage = require("../pages/landingPage");
-
 const expect = require("chai").expect;
 
 Feature("Landing page UI");

@@ -25,6 +25,7 @@ const headlessArgs = HEADLESS
       "--disable-renderer-backgrounding",
       "--start-maximized",
       "--unlimited-storage",
+      "--shm-size=1gb",
     ];
 
 const args = [

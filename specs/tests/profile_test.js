@@ -9,12 +9,15 @@ Before((I) => {
   I.wait(5); //should be changed to waitForDetached spinner
 });
 
-Scenario("Check landing page contains upload new image, edit name and edit phone buttons", async (I, profilePage) => {
+Scenario(
+  "Check landing page contains upload new image, edit name and edit phone buttons",
+  async (I, profilePage) => {
     I.amOnPage(testData.relativeUrl);
     I.seeElement(profilePage.uploadNewImageButton);
     I.seeElement(profilePage.profileEditNameButton);
     I.seeElement(profilePage.profileEditTelephoneButton);
-  });
+  }
+);
 
 Scenario(
   "Check user ability to change first and second names",
@@ -28,16 +31,21 @@ Scenario(
     );
     genericPage.enterValueToInputField(
       profilePage.newSecondNameInput,
-      testData.newFirstName
+      testData.newSecondName
     );
     genericPage.clickOnElement(profilePage.profileSubmitNameButton);
-    I.see(`${testData.newFirstName} ${testData.newFirstName}`, profilePage.userNameText);
+    I.waitForElement(profilePage.userNameText);
+    I.see(
+      `${testData.newFirstName} ${testData.newSecondName}`,
+      profilePage.userNameText
+    );
 
     profilePage.enterSaveCheckUserFirstAndSecondName(
       testData.initialFirstName,
       testData.initialSecondName
     );
-  });
+  }
+);
 
 Scenario(
   "Check user ability to change phone number",
@@ -57,28 +65,16 @@ Scenario(
 );
 
 Scenario(
-    "Check user ability to use delete phone button during changing phone number",
-    async (I, profilePage, genericPage) => {
-      I.amOnPage(testData.relativeUrl);
-  
-      genericPage.clickOnElement(profilePage.profileEditTelephoneButton);
-      genericPage.enterValueToInputField(
-        profilePage.newTelephoneInput,
-        testData.newPhone
-      );
-      I.see(testData.newPhone, profilePage.newTelephoneInput);
-      pause();
-      genericPage.clickOnElement(profilePage.profileRemovePhoneButton);
-      genericPage.clickOnElement(profilePage.profileSubmitPhoneButton);
+  "Check user ability to use delete phone button during changing phone number",
+  async (I, profilePage, genericPage) => {
+    I.amOnPage(testData.relativeUrl);
+    profilePage.enterSaveCheckUserPhone(testData.newPhone);
+    genericPage.clickOnElement(profilePage.profileEditTelephoneButton);
+    
+    genericPage.clickOnElement(profilePage.profileRemovePhoneButton);
+    genericPage.clickOnElement(profilePage.profileSubmitPhoneButton);
+    I.see("", profilePage.userPhoneText);
 
-      I.see("", profilePage.userPhoneText);
-
-      genericPage.clickOnElement(profilePage.profileEditTelephoneButton);
-      genericPage.enterValueToInputField(
-        profilePage.newTelephoneInput,
-        testData.initialPhone
-      );
-      genericPage.clickOnElement(profilePage.profileSubmitPhoneButton);
-    }
-  );
-
+    profilePage.enterSaveCheckUserPhone(testData.initialPhone);
+  }
+);
