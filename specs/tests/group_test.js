@@ -1,7 +1,7 @@
 const expect = require("chai").expect;
 const credentials = require('../testData.json');
 
-Feature("Meeting History functionality");
+Feature("Groups functionality");
 
 Before((I) => {
     I.amOnPage("/");
@@ -10,10 +10,12 @@ Before((I) => {
   });
 
 Scenario(
-  "#1 Check user ability to create new group and delete it",
+  "#1 Check user ability to create new group with member, send message and delete group",
   async (I, homePage, groupPage) => {
     I.amOnPage("/home");
-    groupPage.createNewGroup(credentials.newGroupName, credentials.newGroupDescription, credentials.contactForSearch);
+    groupPage.createNewGroupAddContact(credentials.newGroupName, credentials.newGroupDescription, credentials.contactForSearch);
+    groupPage.goToGroupWriteSendMessageCheck(credentials.newGroupName, credentials.messageText);
     groupPage.deleteGroup();
   },
 );
+
