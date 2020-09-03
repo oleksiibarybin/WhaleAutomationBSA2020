@@ -5,7 +5,7 @@ module.exports = {
     headerContactDiv: "div.header",
     emailOfContactInput: "input.ng-untouched.ng-pristine.ng-invalid",
     addNewContactButton: "#submit-contact",
-    closeModalButton: "modal-close",
+    closeModalButton: "#modal-close",
     successContactAddText: "div.toast-message.ng-star-inserted",
     contactsContainerDiv: "div.contacts-container",
     addedContact: "div.description",
@@ -13,23 +13,27 @@ module.exports = {
     confirmationButtonDiv: "#confirmation-modal-confirm",
     deleteContactButton: "#delete-contact",
 
-  verifyAllRequiredControlsAreOnContactsPage() {
-        I.waitForElement(this.addNewContactModalDiv);
-        I.seeElement(this.headerContactDiv);
-        // I.seeElement(this.emailOfContactInput);
-        I.seeElement(this.addNewContactModalDiv);
-        I.seeElement(this.closeModalButton);
-    },
+  // verifyAllRequiredControlsAreOnContactsPage() {
+  //       I.waitForElement(this.addNewContactModalDiv);
+  //       I.seeElement(this.headerContactDiv);
+  //       I.seeElement(this.emailOfContactInput);
+  //       I.seeElement(this.addNewContactModalDiv);
+  //       I.seeElement(this.closeModalButton);
+  //   },
 
-  AddNewContact(userEmail, userName) {
+  AddNewContactRequest(userEmail, userName) {
         I.waitForElement(this.addNewContactModalDiv);
         this.clickOnElement(this.emailOfContactInput);
         this.enterValueToInputField(this.emailOfContactInput, userEmail);
         this.clickOnElement(this.addNewContactButton);
-        // I.waitForElement(this.successContactAddText);
-        // I.see('Request has been sent',this.successContactAddText);
+        I.waitForElement(this.successContactAddText);
+        I.seeTextEquals('Request has been sent',this.successContactAddText);
         I.waitForElement(this.addedContact);
         I.see(userName,this.addedContact);
+    },
+
+    CloseAddContactWindow() {
+      this.clickOnElement(this.closeModalButton);
     },
 
   DeleteContactRequest() {
