@@ -17,6 +17,9 @@ module.exports = {
     
     profileEditTelephoneButton: "#profile-edittelephone button",
     newTelephoneInput: "#userTelephone",
+    userTelephoneText: ".phone>span",
+    removeTelephoneButton: "a.remove-telephone-button",
+    profileSubmitTelephoneButton: "#profile-submit-telephone",
   
     verifyAllRequiredControlsAreOnPage() {
       I.waitForElement(this.userProfileInformationDiv);
@@ -32,6 +35,22 @@ module.exports = {
       this.enterValueToInputField(this.newSecondNameInput, secondName);
       this.clickOnElement(this.profileSubmitNameButton);
       I.see(`${firstName} ${secondName}`, this.userNameText);
+    },
+
+    enterSaveCheckUserTelephone(telephone) {
+      I.waitForElement(this.userProfileInformationDiv);
+      this.clickOnElement(this.profileEditTelephoneButton);
+      this.enterValueToInputField(this.newTelephoneInput, telephone);
+      this.clickOnElement(this.profileSubmitTelephoneButton);
+      I.see(`${telephone}`, this.userTelephoneText);
+    },
+
+    deleteSaveCheckUserTelephone() {
+      I.waitForElement(this.userProfileInformationDiv);
+      this.clickOnElement(this.profileEditTelephoneButton);
+      this.clickOnElement(this.removeTelephoneButton);
+      this.clickOnElement(this.profileSubmitTelephoneButton);
+      I.dontSee(this.userTelephoneText);
     },
   
     clickOnElement(element) {
