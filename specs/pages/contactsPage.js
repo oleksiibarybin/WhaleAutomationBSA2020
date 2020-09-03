@@ -7,11 +7,17 @@ module.exports = {
     addNewContactButton: "#submit-contact",
     closeModalButton: "#modal-close",
     successContactAddText: "div.toast-message.ng-star-inserted",
+    succesDeleteContactText: "#toast-container > div > div",
     contactsContainerDiv: "div.contacts-container",
     addedContact: "div.description",
     modalWindow: "div.modal.visible.active",
     confirmationButtonDiv: "#confirmation-modal-confirm",
-    deleteContactButton: "#delete-contact",
+    deleteContactButton: "i#delete-contact",
+
+    inputMessageContactChat: "textarea#message",
+    sendMessageContactChatButton: "button#sendmessage",
+    lastMessageContactChatText: ".message-event:last-child  .message >div",
+
 
   // verifyAllRequiredControlsAreOnContactsPage() {
   //       I.waitForElement(this.addNewContactModalDiv);
@@ -41,16 +47,30 @@ module.exports = {
       this.clickOnElement(this.addedContact);
       I.waitForElement(this.modalWindow);
       this.clickOnElement(this.confirmationButtonDiv);
+      // I.seeTextEquals('Canceled', this.succesDeleteContactText);
     },
 
     DeleteContact() {
       I.waitForElement(this.contactsContainerDiv);
       this.clickOnElement(this.addedContact);
+      I.wait(1);
       this.clickOnElement(this.deleteContactButton);
       this.clickOnElement(this.confirmationButtonDiv);
       I.wait(3);
       I.dontSeeElementInDOM(this.addedContact);
     },
+
+    goToContact() {
+      I.waitForElement(this.contactsContainerDiv);
+      this.clickOnElement(this.addedContact);
+  },
+
+    writeSendMessage(messageText) {
+      this.enterValueToInputField(this.inputMessageContactChat, messageText);
+      this.clickOnElement(this.sendMessageContactChatButton);
+      I.waitForElement(this.lastMessageContactChatText);
+      I.seeTextEquals(`${messageText}`, this.lastMessageContactChatText);
+  },
     
   clickOnElement(element) {
       I.waitForElement(element);
