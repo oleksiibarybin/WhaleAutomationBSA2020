@@ -50,7 +50,7 @@ const testPattern = path.relative(
 );
 const timeout = 10000;
 
-const baseUrl = "http://bsa2020-whale.westeurope.cloudapp.azure.com";
+const baseUrl = "https://bsa2020-whale.westeurope.cloudapp.azure.com";
 console.log(`Using ${baseUrl} as app url`);
 
 const defaultConf = {

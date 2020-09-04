@@ -41,6 +41,7 @@ module.exports = {
     lastContactInGroupName: 'div.item:last-child > div.content > div',
     deletelastContactInGroup: "div:last-child > div.icon-wrapper.ng-star-inserted > i",
 
+    settingsWindow: "div#modal-div-close > div",
     selectGroupAdmin: "select#group-admin-select",
     closeEditingGroupButton: "div#modal-div-close i#chat-close",
     saveGroupSettingsButton: "button#submit-group",
@@ -136,6 +137,25 @@ module.exports = {
 
     },
 
+    changeGroupNameDescription(newGroupName, newGroupDescription, existedGroupName, existedGroupDescription){
+        this.clickOnElement(this.editGroupButton);
+        this.enterValueToInputField(this.inputGroupName, newGroupName);
+        this.enterValueToInputField(this.inputGroupDescription, newGroupDescription);
+        
+        //click check
+        this.clickOnElement(this.saveGroupSettingsButton);
+        I.waitForInvisible(this.settingsWindow);
+        I.see(`${newGroupName}`, this.groupName);
+        I.see(`${newGroupDescription}`, this.groupDescription);
+
+        //return back
+        this.clickOnElement(this.editGroupButton);
+        this.enterValueToInputField(this.inputGroupName, existedGroupName);
+        this.enterValueToInputField(this.inputGroupDescription, existedGroupDescription);
+        this.clickOnElement(this.saveGroupSettingsButton);
+        
+    },
+    
 
 
 

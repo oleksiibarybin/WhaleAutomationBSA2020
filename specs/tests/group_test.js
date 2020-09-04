@@ -46,3 +46,13 @@ Scenario(
       groupPage.addMemeberByEmailAndDelete(credentials.emailForSearch, credentials.emailNameForSearch);
     },
   );
+
+
+Scenario(
+    "#5 Check user ability to change group name and description",
+    async (I, groupPage) => {
+      I.amOnPage("/home");
+      groupPage.goToGroup(groupPage.existedGroupNameInList, credentials.existedGroupName, credentials.existedGroupDescription);
+      groupPage.changeGroupNameDescription(credentials.newGroupName, credentials.newGroupDescription, credentials.existedGroupName, credentials.existedGroupDescription);
+    },
+  );
